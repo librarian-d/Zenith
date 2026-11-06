@@ -96,8 +96,9 @@
   function buildPlan(e) {
     if (e.submitter?.value === 'cancel') return;
     e.preventDefault();
-    const title=$('#goalTitle').value.trim(), target=$('#goalDate').value, hours=Number($('#goalTime').value), context=$('#goalContext').value.trim();
+    const title=$('#goalTitle').value.trim(), target=$('#goalDate').value, selectedHours=$('#goalTime').value, hours=selectedHours==='custom'?Number($('#goalCustomTime').value):Number(selectedHours), context=$('#goalContext').value.trim();
     if(!title||!target) return;
+    if(!Number.isFinite(hours)||hours<=0){ $('#goalCustomTime').focus(); showToast('Enter the hours you can give this goal each week'); return; }
     const targetDate=new Date(`${target}T12:00:00`), start=new Date(); start.setHours(12,0,0,0);
     const span=Math.max(4,Math.ceil((targetDate-start)/86400000));
     const templates=planSets.find(p=>p.match.test(title));
@@ -139,7 +140,8 @@
     }
     lastReminderCheck=now;
   }
-  function openRoadmap() { $('#goalDate').value = localDateKey(new Date(Date.now()+30*86400000)); $('#roadmapDialog').showModal(); setTimeout(()=>$('#goalTitle').focus(),20); }
+  function toggleCustomHours() { const custom=$('#goalTime').value==='custom'; $('#customHoursField').classList.toggle('hidden',!custom); $('#goalCustomTime').required=custom; }
+  function openRoadmap() { $('#goalDate').value = localDateKey(new Date(Date.now()+30*86400000)); toggleCustomHours(); $('#roadmapDialog').showModal(); setTimeout(()=>$('#goalTitle').focus(),20); }
   function focusOpen() { $('#focusDialog').showModal(); $('#timerMission').textContent = sortTasks(data.tasks.filter(t=>t.date===localDateKey()&&!t.done))[0]?.title || 'Choose one thing. Let the rest wait.'; updateTimer(); }
   function updateTimer() { const min=String(Math.floor(focusRemaining/60)).padStart(2,'0'), sec=String(focusRemaining%60).padStart(2,'0'); $('#timerDisplay').textContent=`${min}:${sec}`; $('#timerProgress').style.width=`${(25*60-focusRemaining)/(25*60)*100}%`; }
   function timerStartPause() {
@@ -150,6 +152,7 @@
 
   updateGreeting(); render();
   document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => button.closest('dialog')?.close()));
+  $('#goalTime').addEventListener('change',()=>{toggleCustomHours();if($('#goalTime').value==='custom')$('#goalCustomTime').focus();});
   $('#taskForm').addEventListener('submit',e=>{if(e.submitter?.value==='cancel')return;e.preventDefault();saveTaskFromForm();});
   $('#roadmapForm').addEventListener('submit',buildPlan);
   $('#addTaskTop').addEventListener('click',openTask); $('#addTaskInline').addEventListener('click',openTask); $('#emptyAdd').addEventListener('click',openTask);
