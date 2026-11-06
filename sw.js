@@ -1,5 +1,5 @@
-const CACHE = 'zenith-shell-v2';
-const CORE = ['./', './index.html', './styles.css', './app.js', './manifest.json', './icon.svg'];
+const CACHE = 'zenith-shell-v3';
+const CORE = ['./?v=3', './index.html?v=3', './styles.css?v=3', './app.js?v=3', './manifest.json?v=3', './icon.svg?v=3'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)));
   self.skipWaiting();
