@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#090d1d" />
   <meta name="description" content="Zenith — a calmer way to plan your days and make progress on what matters." />
   <meta name="mobile-web-app-capable" content="yes" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json?v=3" />
+  <link rel="icon" href="icon.svg?v=3" type="image/svg+xml" />
   <title>Zenith — Plan your next orbit</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <div class="cosmos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -68,8 +68,8 @@
   <dialog id="focusDialog" class="modal focus-modal"><form method="dialog"><button type="button" class="close-button" data-close-dialog aria-label="Close">×</button><div class="eyebrow muted">A QUIET MOMENT IN ORBIT</div><div class="timer-display" id="timerDisplay">25:00</div><p id="timerMission">Choose one thing. Let the rest wait.</p><div class="timer-track"><i id="timerProgress"></i></div><div class="modal-actions centered"><button class="secondary-button" id="timerReset" value="cancel">Reset</button><button class="primary-button" id="timerToggle" value="default">Begin focus</button></div></form></dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
-  <script>if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./sw.js').catch(() => {});</script>
+  <script src="app.js?v=3"></script>
+  <script>if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./sw.js?v=3').catch(() => {});</script>
 </body>
 </html>
 
