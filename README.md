@@ -1,6 +1,8 @@
 # Zenith
 
-Zenith is a responsive, space-themed schedule and roadmap planner built as a static web app.
+A responsive, space-themed schedule and roadmap planner.
+
+**Live app:** https://zenith-planner.dg361810.workers.dev/
 
 ## Features
 
@@ -12,12 +14,12 @@ Zenith is a responsive, space-themed schedule and roadmap planner built as a sta
 - Installable progressive web app shell with basic offline caching
 - Layout adapts to phones, tablets, and desktop screens
 
-The roadmap planner runs locally in your browser and uses goal-aware templates. It does not call a hosted AI model. Task reminders are delivered while the app is open; a closed browser needs a push-notification service for background delivery.
+The roadmap planner runs locally in your browser and uses goal-aware templates; it does not call a hosted AI model. Task reminders are delivered while the app is open. Background reminders while the browser is closed need a push-notification service. Your tasks and roadmaps stay in the browser where you use Zenith.
 
 ## Local preview
 
 Open `index.html` in a browser. For service-worker and install support, use a local static server or the published HTTPS site.
 
-## Publish
+## Publishing
 
-A GitHub Actions workflow deploys the repository root to GitHub Pages on pushes to `main`. Browser data stays on the device where the app is used.
+The static app is deployed to Cloudflare at the live URL above. The GitHub repository stores the source files. Browser data is not synced between devices.
