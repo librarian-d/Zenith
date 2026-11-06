@@ -94,6 +94,7 @@
     { match:/trip|travel|vacation|move|relocat/i, phases:[['Set the essentials','Confirm dates, budget, and the decisions that shape the rest of the plan.'],['Research options','Compare a few good choices and keep the details in one place.'],['Make the arrangements','Book or confirm the essentials and prepare what you will need.'],['Final readiness','Check the details, leave a little buffer, and enjoy the journey.']] }
   ];
   function buildPlan(e) {
+    if (e.submitter?.value === 'cancel') return;
     e.preventDefault();
     const title=$('#goalTitle').value.trim(), target=$('#goalDate').value, hours=Number($('#goalTime').value), context=$('#goalContext').value.trim();
     if(!title||!target) return;
@@ -148,7 +149,7 @@
   }
 
   updateGreeting(); render();
-  $('#taskForm').addEventListener('submit',e=>{e.preventDefault();saveTaskFromForm();});
+  $('#taskForm').addEventListener('submit',e=>{if(e.submitter?.value==='cancel')return;e.preventDefault();saveTaskFromForm();});
   $('#roadmapForm').addEventListener('submit',buildPlan);
   $('#addTaskTop').addEventListener('click',openTask); $('#addTaskInline').addEventListener('click',openTask); $('#emptyAdd').addEventListener('click',openTask);
   $('#newRoadmap').addEventListener('click',openRoadmap); $('#emptyRoadmapBtn').addEventListener('click',openRoadmap); $('#heroPlan').addEventListener('click',openRoadmap);
