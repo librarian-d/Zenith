@@ -149,6 +149,7 @@
   }
 
   updateGreeting(); render();
+  document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => button.closest('dialog')?.close()));
   $('#taskForm').addEventListener('submit',e=>{if(e.submitter?.value==='cancel')return;e.preventDefault();saveTaskFromForm();});
   $('#roadmapForm').addEventListener('submit',buildPlan);
   $('#addTaskTop').addEventListener('click',openTask); $('#addTaskInline').addEventListener('click',openTask); $('#emptyAdd').addEventListener('click',openTask);
