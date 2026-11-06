@@ -1,0 +1,13 @@
+{
+  "name": "Zenith — Plan your next orbit",
+  "short_name": "Zenith",
+  "description": "A calmer way to plan your days and make progress on what matters.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090d1d",
+  "theme_color": "#090d1d",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
+
