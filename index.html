@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090d1d" />
+  <meta name="description" content="Zenith — a calmer way to plan your days and make progress on what matters." />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <title>Zenith — Plan your next orbit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cosmos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="Zenith home"><span class="brand-mark">✳</span><span>zenith</span></a>
+      <div class="workspace-label">YOUR SPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="today"><span class="nav-icon">◷</span>Today <span class="nav-count" id="navTodayCount">0</span></button>
+        <button class="nav-item" data-view="all"><span class="nav-icon">▤</span>All missions</button>
+        <button class="nav-item" data-view="roadmap"><span class="nav-icon">⌁</span>Roadmaps</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="orbit-card"><div class="orbit-art"><span>✦</span></div><div class="orbit-copy"><strong>Small steps,<br>far horizons.</strong><span>Your next chapter starts today.</span></div></div>
+        <button class="nav-item settings-btn" id="notifySetting"><span class="nav-icon">♧</span><span>Notifications</span><span class="setting-state" id="notifyState">Off</span></button>
+        <div class="profile"><div class="avatar">Z</div><div class="profile-copy"><strong>My Zenith</strong><span>Personal workspace</span></div><span class="profile-more">···</span></div>
+      </div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar"><div class="mobile-brand"><span class="brand-mark">✳</span>zenith</div><div class="breadcrumbs">My space <span>/</span> <b id="crumbView">Today</b></div><div class="top-actions"><button class="icon-button" id="topNotify" aria-label="Enable reminders" title="Enable reminders">♧</button><button class="avatar small-avatar" title="Personal workspace">Z</button></div></header>
+
+      <section class="welcome-row">
+        <div><div class="eyebrow"><span class="live-dot"></span> YOUR DAILY FLIGHT PLAN</div><h1 id="greeting">Good day, explorer<span class="heading-star"> ✦</span></h1><p class="date-line" id="todayDate"></p></div>
+        <button class="primary-button" id="addTaskTop"><span>＋</span> Add a mission</button>
+      </section>
+
+      <section class="hero-card">
+        <div class="hero-grid"></div><div class="hero-content"><div class="hero-pill"><span>✦</span> YOUR NORTH STAR</div><h2>Make room for<br><em>what matters.</em></h2><p>A little progress, consistently, takes you farther than a perfect plan.</p><button class="text-button" id="heroPlan">Plan a roadmap <span>↗</span></button></div><div class="planet-wrap"><div class="planet-orbit orbit-one"></div><div class="planet-orbit orbit-two"></div><div class="planet"><div class="planet-light"></div><div class="planet-ring"></div></div><span class="planet-spark spark-a">✦</span><span class="planet-spark spark-b">·</span><span class="planet-spark spark-c">✧</span></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Your progress">
+        <article class="stat-card"><div class="stat-top"><span class="stat-label">MISSIONS TODAY</span><span class="stat-icon violet">◷</span></div><div class="stat-value" id="statToday">0 <small>/ 0</small></div><div class="stat-foot"><span class="progress-track"><i id="todayProgress"></i></span><span id="todayPct">0%</span></div></article>
+        <article class="stat-card"><div class="stat-top"><span class="stat-label">IN YOUR ORBIT</span><span class="stat-icon blue">✧</span></div><div class="stat-value" id="statOpen">0</div><div class="stat-note">missions still in progress</div></article>
+        <article class="stat-card"><div class="stat-top"><span class="stat-label">STREAK</span><span class="stat-icon amber">✦</span></div><div class="stat-value"><span id="statStreak">0</span><small> days</small></div><div class="stat-note">keep showing up for yourself</div></article>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel schedule-panel" id="scheduleSection"><div class="panel-heading"><div><div class="eyebrow muted">YOUR SCHEDULE</div><h2 id="scheduleTitle">Today’s missions</h2></div><button class="subtle-button" id="viewAllBtn">View all <span>→</span></button></div><div class="task-list" id="taskList"></div><div class="empty-state hidden" id="emptyState"><div class="empty-orbit">✦</div><h3>Your sky is clear</h3><p>Add a mission to give your day some direction.</p><button class="text-button" id="emptyAdd">Create your first mission <span>＋</span></button></div><button class="add-inline" id="addTaskInline"><span>＋</span> Add a mission</button></div>
+
+        <div class="panel focus-panel"><div class="panel-heading"><div><div class="eyebrow muted">A MOMENT FOR YOU</div><h2>Focus window</h2></div><span class="focus-moon">☾</span></div><div class="focus-visual"><div class="focus-ring"><div class="focus-center"><span>✦</span><small>YOUR PACE</small></div></div><div class="focus-caption"><span class="live-dot"></span><span id="focusCopy">The next step is enough.</span></div></div><div class="focus-tip"><span class="tip-icon">✧</span><p id="focusTip">Pick one mission. Give it your full attention for 25 minutes, then take a breath.</p></div><button class="focus-button" id="focusStart">Start a focus session <span>→</span></button></div>
+      </section>
+
+      <section class="panel roadmap-panel" id="roadmapSection"><div class="panel-heading"><div><div class="eyebrow muted">THINKING AHEAD</div><h2>Your roadmap</h2><p class="panel-subtitle">Turn a big idea into a sequence of doable steps.</p></div><button class="outline-button" id="newRoadmap"><span>✧</span> Build with planner</button></div><div class="roadmap-content" id="roadmapContent"></div><div class="empty-roadmap" id="emptyRoadmap"><div class="roadmap-star">⌁</div><div><strong>No roadmap plotted yet</strong><p>Tell Zenith what you’re working toward and get a clear path forward.</p></div><button class="text-button" id="emptyRoadmapBtn">Create a roadmap <span>→</span></button></div></section>
+      <footer class="footer"><span>✳ Zenith</span><span>One step at a time, across the universe.</span></footer>
+    </main>
+  </div>
+
+  <dialog id="taskDialog" class="modal"><form method="dialog" id="taskForm"><div class="modal-head"><div><div class="eyebrow muted">NEW MISSION</div><h2>Give it a place in your orbit.</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div><label>Mission name<input id="taskTitle" maxlength="90" placeholder="e.g. Sketch the first concept" required /></label><div class="form-row"><label>Date<input id="taskDate" type="date" required /></label><label>Time<input id="taskTime" type="time" /></label></div><div class="form-row"><label>Priority<select id="taskPriority"><option value="medium">Steady</option><option value="high">High priority</option><option value="low">Low pressure</option></select></label><label>Focus time<select id="taskDuration"><option value="25">25 minutes</option><option value="45">45 minutes</option><option value="60">1 hour</option><option value="90">1.5 hours</option></select></label></div><label>Notes <span class="optional">optional</span><textarea id="taskNotes" rows="2" maxlength="240" placeholder="Anything to remember before takeoff?"></textarea></label><div class="modal-actions"><button class="secondary-button" value="cancel">Cancel</button><button class="primary-button" id="saveTask" value="default">Add mission <span>→</span></button></div></form></dialog>
+
+  <dialog id="roadmapDialog" class="modal"><form method="dialog" id="roadmapForm"><div class="modal-head"><div><div class="eyebrow muted">ROADMAP PLANNER</div><h2>Where do you want to go?</h2><p class="panel-subtitle">Share a goal. Zenith will break it into milestones and a first set of steps.</p></div><button class="close-button" value="cancel" aria-label="Close">×</button></div><label>Your destination<input id="goalTitle" maxlength="100" placeholder="e.g. Launch my portfolio by summer" required /></label><div class="form-row"><label>Target date<input id="goalDate" type="date" required /></label><label>Weekly time<select id="goalTime"><option value="2">About 2 hours</option><option value="4" selected>About 4 hours</option><option value="6">About 6 hours</option><option value="10">10+ hours</option></select></label></div><label>What do you know so far? <span class="optional">optional</span><textarea id="goalContext" rows="3" maxlength="400" placeholder="Skills, constraints, or steps you already have in mind"></textarea></label><div class="planner-note"><span>✧</span><p>Your plan is generated on this device from your goal, timeline, and available time. You can adjust every step.</p></div><div class="modal-actions"><button class="secondary-button" value="cancel">Cancel</button><button class="primary-button" id="buildRoadmap" value="default">Plot my course <span>↗</span></button></div></form></dialog>
+
+  <dialog id="focusDialog" class="modal focus-modal"><form method="dialog"><button class="close-button" value="cancel" aria-label="Close">×</button><div class="eyebrow muted">A QUIET MOMENT IN ORBIT</div><div class="timer-display" id="timerDisplay">25:00</div><p id="timerMission">Choose one thing. Let the rest wait.</p><div class="timer-track"><i id="timerProgress"></i></div><div class="modal-actions centered"><button class="secondary-button" id="timerReset" value="cancel">Reset</button><button class="primary-button" id="timerToggle" value="default">Begin focus</button></div></form></dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+  <script>if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./sw.js').catch(() => {});</script>
+</body>
+</html>
+
